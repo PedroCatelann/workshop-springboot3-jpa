@@ -3,6 +3,11 @@ package com.pedrocatelan.course.entities.pk;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.pedrocatelan.course.entities.Category;
 import com.pedrocatelan.course.entities.Order;
 import com.pedrocatelan.course.entities.Product;
 
@@ -15,13 +20,15 @@ public class OrderItemPK implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
 	@ManyToOne
-	@JoinColumn(name = "orrder_id")
+	@JoinColumn(name = "order_id")
 	private Order order;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
+	
 	
 	public Order getOrder() {
 		return order;
@@ -30,7 +37,16 @@ public class OrderItemPK implements Serializable {
 		this.order = order;
 	}
 	public Product getProduct() {
-		return product;
+		Product p = new Product();
+		p.setName(product.getName());
+		p.setId(product.getId());
+		p.setDescription(product.getDescription());
+		p.setPrice(product.getPrice());
+		p.setImgUrl(product.getImgUrl());
+		for (Category cat : product.getCategories()) {
+			p.getCategories().add(cat);
+		}
+		return p;
 	}
 	public void setProduct(Product product) {
 		this.product = product;
