@@ -3,10 +3,6 @@ package com.pedrocatelan.course.entities.pk;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.pedrocatelan.course.entities.Category;
 import com.pedrocatelan.course.entities.Order;
 import com.pedrocatelan.course.entities.Product;
