@@ -13,6 +13,8 @@ import com.pedrocatelan.course.repositories.UserRepository;
 import com.pedrocatelan.course.services.exceptions.DatabaseException;
 import com.pedrocatelan.course.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class UserService {
 
@@ -48,10 +50,13 @@ public class UserService {
 
 	public User update(Long id, User obj) {
 
-		User entity = repository.getReferenceById(id);
-
-		updateData(entity, obj);
-		return repository.save(entity);
+		try {
+			User entity = repository.getReferenceById(id);
+			updateData(entity, obj);
+			return repository.save(entity);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 
 	}
 
