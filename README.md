@@ -60,7 +60,7 @@ Bem-vindo à API de Venda de Produtos! Esta API foi desenvolvida em Spring Boot 
 ## Exemplo de Requisição (Adição de Produto)
 
 ```http
-POST /api/products
+POST /products
 Content-Type: application/json
 
 {
