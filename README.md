@@ -64,8 +64,9 @@ POST /products
 Content-Type: application/json
 
 {
-   "name": "Notebook",
-   "description": "Notebook de última geração",
-   "price": 2500.00,
-   "quantity": 10
+        "name": "Livro",
+        "description": "Um livro",
+        "price": 9.5,
+        "imgUrl": "",
+        "categories": []        
 }
