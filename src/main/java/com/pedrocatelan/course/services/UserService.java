@@ -64,5 +64,6 @@ public class UserService {
 		entity.setName(obj.getName());
 		entity.setLogin(obj.getLogin());
 		entity.setPhone(obj.getPhone());
+
 	}
 }
